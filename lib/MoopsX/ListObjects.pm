@@ -1,6 +1,7 @@
 package MoopsX::ListObjects;
+use strict; use warnings FATAL => 'all';
 
-use parent Moops;
+use parent 'Moops';
 use List::Objects::WithUtils ();
 
 sub import {

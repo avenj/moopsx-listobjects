@@ -1,4 +1,5 @@
 package MoopsX::ListObjects::Types;
+use strict; use warnings FATAL => 'all';
 
 use Type::Library -base;
 use Type::Utils   -all;
@@ -24,7 +25,7 @@ coerce ImmutableArray =>
   via { immarray(@$_) };
 
 
-declare ImmutableArrayObj => as ImmutableArray;
+declare ImmutableArrayObj => as 'ImmutableArray';
 
 
 declare HashObj =>
