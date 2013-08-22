@@ -8,12 +8,10 @@ sub import {
     'List::Objects::WithUtils' => [
       qw/array immarray hash/,
     ],
-    'MoopsX::ListObjects::Types' => [-all],
+    'MoopsX::ListObjects::Types' => [ -all ],
   );
   goto \&Moops::import
 }
-
-## FIXME export types for same
 
 1;
 
