@@ -29,8 +29,16 @@ MoopsX::ListObjects - Use Moops with List::Objects::WithUtils
   use MoopsX::ListObjects;
 
   class Foo {
-    has mylist => ( default => sub { array }, isa => ArrayObj );
-    has mydata => ( default => sub { hash },  isa => HashObj  );
+    has mylist => ( 
+      default => sub { array }, 
+      isa     => ArrayObj
+    );
+
+    has mydata => ( 
+      default => sub { +{} },
+      isa     => HashObj,
+      coerce  => 1
+    );
 
     method add_items (@items) {
       $self->mylist->push(@items)
@@ -52,8 +60,8 @@ MoopsX::ListObjects - Use Moops with List::Objects::WithUtils
 Extends Toby Inkster's L<Moops> sugary class building syntax with
 L<List::Objects::WithUtils> objects.
 
-Importing L<MoopsX::ListObjects> is the same as importing L<Moops>, except you
-get C<array>, C<immarray>, and C<hash> objects from
+Importing L<MoopsX::ListObjects> is the same as importing L<Moops>, but you
+also get C<array>, C<immarray>, and C<hash> objects from
 L<List::Objects::WithUtils>.
 
 You also get an extra set of types with coercions:
