@@ -1,6 +1,7 @@
 package MoopsX::ListObjects;
 
-use Moops ();
+use parent Moops;
+
 use List::Objects::WithUtils ();
 
 sub import {
