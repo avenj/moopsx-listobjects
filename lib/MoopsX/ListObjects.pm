@@ -8,6 +8,7 @@ sub import {
     'List::Objects::WithUtils' => [
       qw/array immarray hash/,
     ],
+    'MoopsX::ListObjects::Types' => [-all],
   );
   goto \&Moops::import
 }
@@ -30,8 +31,8 @@ MoopsX::ListObjects - Use Moops with List::Objects::WithUtils
   use MoopsX::ListObjects;
 
   class Foo {
-    has mylist => ( default => sub { array } );
-    has mydata => ( default => sub { hash } );
+    has mylist => ( default => sub { array }, isa => ArrayObj );
+    has mydata => ( default => sub { hash },  isa => HashObj  );
 
     method add_items (@items) {
       $self->mylist->push(@items)
@@ -56,6 +57,12 @@ L<List::Objects::WithUtils> objects.
 Importing L<MoopsX::ListObjects> is the same as importing L<Moops>, except you
 get C<array>, C<immarray>, and C<hash> objects from
 L<List::Objects::WithUtils>.
+
+You also get an extra set of types with coercions:
+
+C<ArrayObj>, C<ImmutableArray>, and C<ImmutableArrayObj> will coerce from
+plain ARRAY-type references to the appropriate L<List::Objects::WithUtils>
+object; C<HashObj> will do the same for HASH-type references.
 
 =head1 SEE ALSO
 
