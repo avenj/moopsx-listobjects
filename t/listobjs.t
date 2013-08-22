@@ -7,16 +7,19 @@ class My::Foo :rw {
   has array => (
     default => sub { array },
     isa     => ArrayObj,
+    coerce  => 1,
   );
 
   has hash => (
     default => sub { hash },
     isa     => HashObj,
+    coerce  => 1,
   );
 
   has immarray => (
     default => sub { immarray },
     isa     => ImmutableArray,
+    coerce  => 1,
   );
   has immarray2 => (
     default => sub { immarray },

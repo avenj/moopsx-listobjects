@@ -3,7 +3,7 @@ package MoopsX::ListObjects::Types;
 use Type::Library -base;
 use Type::Utils   -all;
 
-use Types::Standard -types;
+BEGIN { extends 'Types::Standard' }
 
 use List::Objects::WithUtils qw/array immarray hash/;
 
