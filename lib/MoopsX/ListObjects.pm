@@ -3,6 +3,8 @@ use strict; use warnings FATAL => 'all';
 
 use parent 'Moops';
 use List::Objects::WithUtils ();
+use List::Objects::Types ();
+use Type::Registry ();
 
 sub import {
   push @{ $_[1] ||= [] }, (
@@ -11,6 +13,8 @@ sub import {
     ],
     'List::Objects::Types' => [ -all ],
   );
+  #my $pkg = caller;
+  #Type::Registry->for_class($pkg)->add_types('List::Objects::Types');
   goto \&Moops::import
 }
 
@@ -65,9 +69,6 @@ Importing L<MoopsX::ListObjects> is the same as importing L<Moops>, but with
 C<array>, C<immarray>, and C<hash> objects from L<List::Objects::WithUtils>.
 
 You also get the types & coercions from L<List::Objects::Types>.
-C<ArrayObj> and C<ImmutableArray> will coerce from
-plain ARRAY-type references to the appropriate L<List::Objects::WithUtils>
-object; C<HashObj> will do the same for HASH-type references.
 
 =head1 SEE ALSO
 
