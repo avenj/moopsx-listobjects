@@ -7,14 +7,18 @@ use List::Objects::Types ();
 use Type::Registry ();
 
 sub import {
-  push @{ $_[1] ||= [] }, (
-    'List::Objects::WithUtils' => [
-      qw/array immarray hash/,
-    ],
-    'List::Objects::Types' => [ -all ],
-  );
+  my ($class, %params) = @_;
+  push @{ $params{imports} },
+    'List::Objects::Types'     => [ -all ],
+    'List::Objects::WithUtils' => [ qw/
+      array immarray array_of
+      hash hash_of
+    / ],
+  ;
+
   #my $pkg = caller;
   #Type::Registry->for_class($pkg)->add_types('List::Objects::Types');
+  @_ = ( $class, %params );
   goto \&Moops::import
 }
 
