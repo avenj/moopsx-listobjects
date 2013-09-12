@@ -34,20 +34,10 @@ isa_ok $foo->array, 'List::Objects::WithUtils::Array';
 isa_ok $foo->hash,  'List::Objects::WithUtils::Hash';
 isa_ok $foo->immarray, 'List::Objects::WithUtils::Array::Immutable';
 
+
 # Types.
-# FIXME these tests mostly folded into List::Objects::Types
 ok $foo->string eq 'str', 'imported Types::Standard ok';
 
-eval {; $foo->array('foo') };
-ok $@, 'ArrayObj constraint dies ok';
-ok $foo->array( [] ), 'ArrayObj constraint coerce ok';
-
-eval {; $foo->immarray('foo') };
-ok $@, 'ImmutableArray constraint dies ok';
-ok $foo->immarray( [] ), 'ImmutableArray constraint coerce ok';
-
-eval {; $foo->hash('foo') };
-ok $@, 'HashObj constraint dies ok';
-ok $foo->hash( +{} ), 'HashObj constraint coerce ok';
+## FIXME types + Function::Parameters
 
 done_testing;
