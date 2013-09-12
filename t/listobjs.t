@@ -1,5 +1,5 @@
 use Test::More;
-
+use List::Objects::WithUtils;
 use MoopsX::ListObjects;
 
 class My::Foo :rw {
@@ -27,6 +27,9 @@ class My::Foo :rw {
     isa     => Str,
   );
   
+  method fooify ( (ArrayObj) $foo ) {
+    $foo->count
+  }
 }
 
 my $foo = My::Foo->new;
@@ -38,6 +41,6 @@ isa_ok $foo->immarray, 'List::Objects::WithUtils::Array::Immutable';
 # Types.
 ok $foo->string eq 'str', 'imported Types::Standard ok';
 
-## FIXME types + Function::Parameters
+ok $foo->fooify( array 1 .. 10 ) == 10, 'type-checking ok';
 
 done_testing;
