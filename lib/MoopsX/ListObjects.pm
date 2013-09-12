@@ -16,8 +16,6 @@ sub import {
     / ],
   ;
 
-  #my $pkg = caller;
-  #Type::Registry->for_class($pkg)->add_types('List::Objects::Types');
   @_ = ( $class, %params );
   goto \&Moops::import
 }
