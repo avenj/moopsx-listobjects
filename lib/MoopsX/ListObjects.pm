@@ -18,6 +18,13 @@ sub import {
 
   my $pkg = caller;
   Type::Registry->for_class($pkg)->add_types('List::Objects::Types');
+
+  for my $tname (List::Objects::Types->type_names) {
+    my $reg = Type::Registry->for_class($pkg);
+    $reg->add_type( List::Objects::Types->get_type($tname) )
+      unless $reg->simple_lookup($tname)
+  }
+
   @_ = ( $class, %params );
   goto \&Moops::import
 }
