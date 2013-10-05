@@ -11,8 +11,8 @@ sub import {
   push @{ $params{imports} },
     'List::Objects::Types'     => [ -all ],
     'List::Objects::WithUtils' => [ qw/
-      array immarray array_of
-      hash hash_of
+      array immarray array_of immarray_of
+      hash hash_of immhash immhash_of
     / ],
   ;
 
@@ -77,19 +77,20 @@ Extends Toby Inkster's L<Moops> sugary class building syntax with
 L<List::Objects::WithUtils> objects.
 
 Importing L<MoopsX::ListObjects> is the same as importing L<Moops>, but with
-C<array>, C<immarray>, and C<hash> objects from L<List::Objects::WithUtils>.
-
-You also get the types & coercions from L<List::Objects::Types>.
+all of the objects available from L<List::Objects::WithUtils>, as well as the
+types and coercions from L<List::Objects::Types>.
 
 =head1 SEE ALSO
 
 L<Moops>
 
+L<List::Objects::WithUtils>
+
+L<List::Objects::Types>
+
 L<List::Objects::WithUtils::Role::Array>
 
 L<List::Objects::WithUtils::Role::Hash>
-
-L<List::Objects::WithUtils::Array::Immutable>
 
 =head1 AUTHOR
 
